@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: calorie-tracker-mcp
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: MCP_TRANSPORT=streamable-http python server_postgres.py
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: MCP_TRANSPORT
+        value: streamable-http
+      - key: PYTHON_VERSION
+        value: "3.12"
